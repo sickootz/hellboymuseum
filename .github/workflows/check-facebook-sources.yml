@@ -1,0 +1,14 @@
+name: Check Facebook source links
+permissions:
+  contents: read
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require original Facebook links and buttons
+        run: python3 scripts/check-facebook-sources.py
